@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+
+import random
+import os
+import textwrap
+import subprocess
+
+
+def load_quotes():
+    quotes = []
+    quote_dir = os.path.join(os.environ["HOME"], ".fortune")
+    if not os.path.isdir(quote_dir):
+        return []
+    for file_name in os.listdir(quote_dir):
+        if not file_name.endswith(".fortune"):
+            continue
+        file_path = os.path.join(quote_dir, file_name)
+        current_quote_lines = []
+        for line in open(file_path):
+            line = line.rstrip()
+            if line == "%":
+                quotes.append("\n".join(current_quote_lines))
+                current_quote_lines = []
+            else:
+                current_quote_lines.append(line)
+        if current_quote_lines:
+            quotes.append("\n".join(current_quote_lines))
+    return quotes
+
+
+def display(quote):
+    width = int(subprocess.check_output(['tput', 'cols'])) - 8
+    lines = quote.splitlines()
+    for line in lines:
+        if len(line) < width:
+            print "   ", line
+        else:
+            for subline in textwrap.wrap(line, width):
+                print "   ", subline
+
+
+def main():
+    quotes = load_quotes()
+    if quotes:
+        quote = random.choice(quotes)
+        display(quote)
+
+
+if __name__ == '__main__':
+    main()
+
+
