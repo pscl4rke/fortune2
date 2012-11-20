@@ -51,3 +51,6 @@ Room For Improvement
 
 *   If I do provide a sample file then I could put together a test routine.
 
+*   Some definitions of *Cookie Jar* say that multiple percent signs should
+    be used a separators, so I could consider supporting this.
+
