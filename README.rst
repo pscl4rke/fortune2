@@ -31,18 +31,23 @@ The Program:
 The Database:
     This is the directory ``$HOME/.fortune``.  Any files in here with a
     ``.fortune`` file extension will be treated as data files, and quotes
-    will be loaded from them.  The format is the same as the original
-    fortune's plain-text files (paragraphs of quotes separated by a percent
-    sign on a line on its own).  They can be symlinks.
+    will be loaded from them.  They can be symlinks if desired.  The format
+    has been copied from the original fortune's source files, sometimes
+    referred to as the *Cookie Jar* format.  This means it contains
+    paragraphs of quotes separated by a percent sign on a line on its own.
 
 
 Room For Improvement
 --------------------
 
-It would be good for it to take an argument that lets it use a different database
-directory.
+*   It would be good for it to take an argument that lets it use a different
+    database directory.
 
-I don't want to get into maintaining database files myself, but it would good
-to point to a number of other sources.  I could provide a sample file.
+*   The program could be refactored to work better as a Python module if that
+    would be useful.
 
+*   I don't want to get into maintaining database files myself, but it would good
+    to point to a number of other sources.  I could provide a sample file.
+
+*   If I do provide a sample file then I could put together a test routine.
 
